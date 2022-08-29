@@ -63,7 +63,7 @@ function createSession(sessionId) {
     return new Promise((resolve, reject) => {
         $.ajax({
             type: 'POST',
-            url: OPENVIDU_SERVER_URL + '/api/sessions',
+            url: OPENVIDU_SERVER_URL + '/openvidu/api/sessions',
             data: JSON.stringify({ customSessionId: sessionId }),
             headers: {
                 Authorization: 'Basic ' + btoa('OPENVIDUAPP:' + OPENVIDU_SERVER_SECRET),
@@ -98,7 +98,7 @@ function createToken(sessionId) {
     return new Promise((resolve, reject) => {
         $.ajax({
             type: 'POST',
-            url: OPENVIDU_SERVER_URL + '/api/tokens',
+            url: OPENVIDU_SERVER_URL + '/openvidu/api/tokens',
             data: JSON.stringify({ session: sessionId }),
             headers: {
                 Authorization: 'Basic ' + btoa('OPENVIDUAPP:' + OPENVIDU_SERVER_SECRET),

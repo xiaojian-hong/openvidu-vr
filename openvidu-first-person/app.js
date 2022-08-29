@@ -50,7 +50,7 @@ window.onbeforeunload = function() {
  *   3) The token must be consumed in Session.connect() method
  */
 
-var OPENVIDU_SERVER_URL = 'https://demos.openvidu.io:4443';
+var OPENVIDU_SERVER_URL = "https://" + location.hostname + ":4443";
 var OPENVIDU_SERVER_SECRET = 'MY_SECRET';
 
 function getToken(mySessionId) {
@@ -62,7 +62,7 @@ function createSession(sessionId) {
     return new Promise((resolve, reject) => {
         $.ajax({
             type: 'POST',
-            url: OPENVIDU_SERVER_URL + '/api/sessions',
+            url: OPENVIDU_SERVER_URL + "/openvidu/api/sessions",
             data: JSON.stringify({ customSessionId: sessionId }),
             headers: {
                 Authorization: 'Basic ' + btoa('OPENVIDUAPP:' + OPENVIDU_SERVER_SECRET),
@@ -97,7 +97,7 @@ function createToken(sessionId) {
     return new Promise((resolve, reject) => {
         $.ajax({
             type: 'POST',
-            url: OPENVIDU_SERVER_URL + '/api/tokens',
+            url: OPENVIDU_SERVER_URL + '/openvidu/api/tokens',
             data: JSON.stringify({ session: sessionId }),
             headers: {
                 Authorization: 'Basic ' + btoa('OPENVIDUAPP:' + OPENVIDU_SERVER_SECRET),
